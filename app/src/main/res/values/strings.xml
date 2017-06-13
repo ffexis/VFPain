@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">VFPain</string>
+    <string name="app_name">Von Frey Test Calculator</string>
+    <string name="vfh_init">Select a von Frey hair</string>
+    <string name="result_init">Result</string>
 </resources>
