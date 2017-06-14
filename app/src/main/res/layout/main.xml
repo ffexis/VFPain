@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/textview_border"
         android:gravity="start"
-        android:text="@string/vfh_init"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:text="@string/vfh_init"
         android:textSize="24sp"
         tools:fontFamily="sans-serif-condensed" />
 
