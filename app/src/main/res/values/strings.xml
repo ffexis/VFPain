@@ -3,4 +3,5 @@
     <string name="vfh_init">Select a von Frey hair</string>
     <string name="result_init">Result</string>
     <string name="vfh">Von Frey hair used: </string>
+    <string name="result_err">ERROR</string>
 </resources>
