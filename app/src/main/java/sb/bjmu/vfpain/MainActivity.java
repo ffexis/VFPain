@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtox8=(TextView)findViewById(R.id.text_ox8);
         TextView txtox9=(TextView)findViewById(R.id.text_ox9);
         if(r_nvfh<0||r_nvfh>8||r_nox<0||r_nox>10){
-            Log.e("MainActivity","Wrong VFH("+r_nvfh+") or NOX("+r_nox+")");
+            Log.e(TAG,"Wrong VFH("+r_nvfh+") or NOX("+r_nox+")");
             //return;//parameters check
         }else if(r_nox==0&&r_nvfh==0) {
             txtox0.setText("");
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
             txtox7.setText("");
             txtox8.setText("");
             txtox9.setText("");
-            txtres.setText(this.getString(R.string.result_err));
+            txtres.setText("0");
             txtvfh.setText(this.getString(R.string.vfh)+" "+String.valueOf(r_nvfh));
-            Toast.makeText(MainActivity.this,"Input von Frey Test record first.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,this.getString(R.string.toast_vfr),Toast.LENGTH_SHORT).show();
             //res error
         }else if(r_nvfh==0&&!(r_nox==0)){
             txtvfh.setText(this.getString(R.string.vfh_init));
-            txtres.setText(this.getString(R.string.vfh_init));
+            txtres.setText("0");
             r_nox--;//parameter r_nox indicates the number of test records, in order to use it in following code, -1
             for(int i=0;i<=9;i++) {
                 switch (i){
@@ -183,14 +183,42 @@ public class MainActivity extends AppCompatActivity {
         result=3.233f;
     }
 
+    public void plus(char a){
+        if(nox>=0&&nox<10){
+            nox++;
+            switch (a){
+                case 'o':
+                    datox[nox-1]="o";
+                    break;
+                case 'x':
+                    datox[nox-1]="x";
+                    break;
+                default:
+                    Log.d(TAG, "plus: incorrect parameter");
+                    break;
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        setdata();
-        //init buttons
+        //setdata();
+        //get button objects
         Button btneq=(Button)findViewById(R.id.btn_eq);
         Button btnc=(Button)findViewById(R.id.btn_backsp);
+        Button btn1=(Button)findViewById(R.id.btn_p1);
+        Button btn2=(Button)findViewById(R.id.btn_p2);
+        Button btn3=(Button)findViewById(R.id.btn_p3);
+        Button btn4=(Button)findViewById(R.id.btn_p4);
+        Button btn5=(Button)findViewById(R.id.btn_p5);
+        Button btn6=(Button)findViewById(R.id.btn_p6);
+        Button btn7=(Button)findViewById(R.id.btn_p7);
+        Button btn8=(Button)findViewById(R.id.btn_p8);
+        Button btno=(Button)findViewById(R.id.btn_o);
+        Button btnx=(Button)findViewById(R.id.btn_x);
+        //button equal
         btneq.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -199,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 ResUpdate(nvfh,result,nox,datox);
             }
         });
+        //button clear
         btnc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
                 ResUpdate(nvfh, result, nox, datox);
             }
         });
+        //button clear long click
         btnc.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -218,6 +248,77 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, composer(nox, datox), Toast.LENGTH_SHORT).show();
                 ResUpdate(nvfh, result, nox, datox);
                 return true;
+            }
+        });
+        //button VFH N
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=1;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=2;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=3;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=4;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=5;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=6;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=7;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nvfh=8;
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                plus('o');
+                ResUpdate(nvfh,result,nox,datox);
+            }
+        });
+        btnx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                plus('x');
+                ResUpdate(nvfh,result,nox,datox);
             }
         });
 

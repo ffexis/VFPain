@@ -20,7 +20,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp">
 
         <TextView
             android:id="@+id/text_ox0"
@@ -113,7 +115,6 @@
             android:textSize="24sp" />
 
     </LinearLayout>
-
     <TextView
         android:id="@+id/text_res"
         android:layout_width="match_parent"
@@ -125,7 +126,6 @@
         android:textSize="48sp"
         android:text="@string/result_init"
         tools:fontFamily="sans-serif-condensed" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +161,7 @@
 
 
                     <Button
-                        android:id="@+id/btm_p3"
+                        android:id="@+id/btn_p3"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -257,16 +257,6 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_backsp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:gravity="center"
-                android:text="c"
-                android:textSize="32sp" />
-
-            <Button
                 android:id="@+id/btn_mad"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -283,6 +273,17 @@
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:text="M-"
                 android:textSize="24sp" />
+            <Button
+                android:id="@+id/btn_backsp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:gravity="center"
+                android:text="c"
+                android:textSize="32sp" />
+
+
 
             <Button
                 android:id="@+id/btn_eq"
@@ -295,5 +296,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+
 
 </LinearLayout>
