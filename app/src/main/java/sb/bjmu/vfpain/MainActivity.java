@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             txtox7.setText("");
             txtox8.setText("");
             txtox9.setText("");
-            txtres.setText(this.getString(R.string.result_init));
+            txtres.setText("0.0");
             txtvfh.setText(this.getString(R.string.vfh_init));//hold c button
         }else if(r_nox==0&&!(r_nvfh==0)){
             txtox0.setText("");
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
             txtox7.setText("");
             txtox8.setText("");
             txtox9.setText("");
-            txtres.setText("0");
+            txtres.setText("0.0");
             txtvfh.setText(this.getString(R.string.vfh)+" "+String.valueOf(r_nvfh));
             Toast.makeText(MainActivity.this,this.getString(R.string.toast_vfr),Toast.LENGTH_SHORT).show();
             //res error
         }else if(r_nvfh==0&&!(r_nox==0)){
             txtvfh.setText(this.getString(R.string.vfh_init));
-            txtres.setText("0");
+            txtres.setText("0.0");
             r_nox--;//parameter r_nox indicates the number of test records, in order to use it in following code, -1
             for(int i=0;i<=9;i++) {
                 switch (i){
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         nvfh=5;
         result=3.233f;
     }
-
+    //plus an o/x to VF TEST RECORD
     public void plus(char a){
         if(nox>=0&&nox<10){
             nox++;
@@ -222,8 +222,7 @@ public class MainActivity extends AppCompatActivity {
         btneq.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                setdata();
-                Toast.makeText(MainActivity.this,composer(3,datox),Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "(BTNEQ_CLICK)DATOX:"+composer(nox,datox));
                 ResUpdate(nvfh,result,nox,datox);
             }
         });
@@ -232,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nox >= 1) {nox--;}
-                Toast.makeText(MainActivity.this, composer(nox, datox), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "(BTNC_CLICK)DATOX: "+composer(nox,datox));
                 ResUpdate(nvfh, result, nox, datox);
             }
         });
@@ -245,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i=0;i<=9;i++){
                     datox[i]="";
                 }
-                Toast.makeText(MainActivity.this, composer(nox, datox), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "(BTNC_LONGCLICK)DATOX: "+composer(nox,datox));
                 ResUpdate(nvfh, result, nox, datox);
                 return true;
             }
@@ -324,6 +323,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    /*VF TEST Calculator
+    public float calc(int c_nvfh, int c_nox, String[] c_datox){
+
+    }*/
 
 
 }
